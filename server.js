@@ -4,8 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 'use strict';
-
+//whatever I added was from https://codeforgeek.com/render-html-file-expressjs/
 const express = require('express');
+const path = require('path');  
+const router = express.Router();   
 
 // Constants
 const PORT = 3000;
@@ -13,9 +15,17 @@ const HOST = '0.0.0.0';
 
 // App
 const app = express();
-app.get('/', (req, res) => {
-	res.send('Hello remote world!\n');
-});
+
+router.get('/', function (req, res) {
+  res.sendFile(path.join( __dirname + '/index.html'));
+}); 
+
+app.use('/',router); 
+
+//below was original one
+/*app.get('/', (req, res) => {
+	res.render('index');
+});*/
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
