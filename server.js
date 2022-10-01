@@ -24,7 +24,7 @@ app.use('/',router);
 
 //below was original one
 /*app.get('/', (req, res) => {
-	res.render('index');
+	res.render('Hello world \n');
 });*/
 
 app.listen(PORT, HOST);
